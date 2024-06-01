@@ -40,7 +40,11 @@ export async function getFeaturedEvents() {
 
 export async function getAllEvents() {
   const res = await fetch(apiUrl + "/events.json").then((res) => res.json());
-  return JSON.parse(res);
+  const data = [];
+  for (const item in res) {
+    data.push(res[item]);
+  }
+  return data;
 }
 
 export function getFilteredEvents(dateFilter) {
